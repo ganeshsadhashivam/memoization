@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Child from "./Child";
+import { useState } from "react";
 
 function App() {
+  const [count, setCount] = useState(0);
+  console.log("parent rendering");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="parent">
+      <p>you clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>click me</button>
+      <Child header={`i am child ${count}`} />
     </div>
   );
 }
